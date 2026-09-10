@@ -1,176 +1,268 @@
-<!DOCTYPE html
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AutoValet & Inspection Service</title>
-  <style>
-    :root {
-      --primary: #0052cc;
-      --bg: #f4f5f7;
-      --card: #ffffff;
-      --text: #172b4d;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoValet & Digital Liability Intake</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-    .app-card {
-      background: var(--card);
-      width: 100%;
-      max-width: 450px;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
 
-    h2 { margin-top: 0; color: var(--primary); font-size: 1.4rem; }
-    p { font-size: 0.9rem; color: #5e6c84; }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
 
-    .form-group { margin-bottom: 16px; }
-    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #dfe1e6;
-      border-radius: 8px;
-      box-sizing: border-box;
-      font-size: 0.95rem;
-    }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: var(--primary);
+        }
 
-    .legal-box {
-      background: #f8f9fa;
-      border: 1px solid #e9ecef;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      height: 90px;
-      overflow-y: scroll;
-      margin-bottom: 12px;
-    }
+        .header p {
+            margin: 5px 0 0;
+            color: #64748b;
+            font-size: 14px;
+        }
 
-    .btn {
-      width: 100%;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    .btn:hover { background: #003d99; }
-    .hidden { display: none; }
-    .success-icon { font-size: 3rem; text-align: center; margin-bottom: 10px; }
-  </style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #475569;
+        }
+
+        input, select, textarea {
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="color"] {
+            padding: 0;
+            width: 40px;
+            height: 38px;
+            border: none;
+            cursor: pointer;
+            background: none;
+        }
+
+        /* Long Legal Terms Box */
+        .legal-box {
+            height: 180px;
+            overflow-y: scroll;
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #334155;
+            margin-bottom: 15px;
+        }
+
+        .legal-box h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input {
+            margin-top: 3px;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .success-message {
+            display: none;
+            background: #dcfce7;
+            color: #166534;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
 
-<div class="app-card">
-  <!-- ШАГ 1: ДАННЫЕ АВТО -->
-  <div id="step-1">
-    <h2>Забор авто на техосмотр</h2>
-    <p>Укажите данные вашего автомобиля для вызова курьера-перегонщика.</p>
-    
-    <div class="form-group">
-      <label>ФИО владельца</label>
-      <input type="text" id="ownerName" placeholder="Иван Иванов">
-    </div>
-    
-    <div class="form-group">
-      <label>Марка и модель авто</label>
-      <input type="text" id="carModel" placeholder="Hyundai Tucson / Toyota Camry">
+<div class="container">
+    <div class="header">
+        <h1>AutoValet Inspection & Intake</h1>
+        <p>Digital Service Transfer & Legal Liability Agreement</p>
     </div>
 
-    <div class="form-group">
-      <label>Гос. номер</label>
-      <input type="text" id="carPlate" placeholder="777 AAA 02">
+    <form id="valetForm">
+        <!-- Customer Details -->
+        <div class="section-title">1. Customer Information</div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+7 (700) 000-00-00" required>
+            </div>
+        </div>
+
+        <!-- Vehicle Details -->
+        <div class="section-title">2. Vehicle Profile</div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="carModel">Make & Model</label>
+                <input type="text" id="carModel" placeholder="e.g. Hyundai Tucson" required>
+            </div>
+            <div class="form-group">
+                <label for="plate">License Plate</label>
+                <input type="text" id="plate" placeholder="777 AAA 02" required>
+            </div>
+            <div class="form-group">
+                <label for="carColor">Vehicle Color</label>
+                <div class="color-picker-wrapper">
+                    <input type="color" id="carColor" value="#2563eb">
+                    <input type="text" id="colorName" placeholder="e.g. Metallic Black" style="flex:1;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="serviceType">Requested Service</label>
+                <select id="serviceType">
+                    <option value="valet">Valet Pick-up & Transport</option>
+                    <option value="maintenance">Scheduled Maintenance (TO)</option>
+                    <option value="inspection">Diagnostics & Inspection</option>
+                </select>
+            </div>
+            <div class="form-group full-width">
+                <label for="damage">Existing Damage / Scratch Notes (Inspection)</label>
+                <textarea id="damage" rows="2" placeholder="Describe any pre-existing scratches, dents, or windshield cracks..."></textarea>
+            </div>
+        </div>
+
+        <!-- Tech Law & Terms Block -->
+        <div class="section-title">3. Digital Liability & Terms of Service</div>
+        <div class="legal-box">
+            <h4>VEHICLE TRANSFER & LIABILITY WAIVER AGREEMENT</h4>
+            <p><strong>1. Scope of Service:</strong> By submitting this form, the vehicle owner ("Client") authorizes the authorized valet driver to operate and transport the specified vehicle to/from designated service centers.</p>
+            <p><strong>2. Inspection & Existing Damage:</strong> The Client certifies that all pre-existing cosmetic or mechanical defects have been accurately declared in Section 2. The service provider is not liable for damages present prior to custody transfer.</p>
+            <p><strong>3. Limitation of Liability:</strong> Liability for incidents during transit is strictly governed by the mandatory insurance protocols of the service provider, bounded by applicable national transport laws.</p>
+            <p><strong>4. Personal Data Processing:</strong> In accordance with Personal Data Protection laws, the Client grants explicit consent for processing contact and vehicle telemetry data solely for operational logistics and service notifications.</p>
+            <p><strong>5. Digital Signature & Timestamp:</strong> Ticking the acknowledgment below serves as a legal digital consent equivalent to a written signature under digital commerce regulations.</p>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="termsCheck" required>
+            <label for="termsCheck">I have read, understood, and accept the Vehicle Transfer Terms and consent to digital inspection recording.</label>
+        </div>
+
+        <button type="submit">Confirm & Handover Vehicle</button>
+    </form>
+
+    <div class="success-message" id="successMsg">
+        ✅ Handover Confirmed! Digital receipt generated & legal consent timestamped.
     </div>
-
-    <button class="btn" onclick="nextStep(2)">Далее: Услуга и время</button>
-  </div>
-
-  <!-- ШАГ 2: ВЫБОР УСЛУГИ -->
-  <div id="step-2" class="hidden">
-    <h2>Параметры сервиса</h2>
-    
-    <div class="form-group">
-      <label>Тип обслуживания</label>
-      <select id="serviceType">
-        <option>Обязательный Техосмотр (ТО)</option>
-        <option>Регулярное Сервисное ТО</option>
-        <option>Комплексная диагностика</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Дата и время забора</label>
-      <input type="datetime-local" id="pickupTime">
-    </div>
-
-    <button class="btn" onclick="nextStep(3)">Далее: Соглашение</button>
-  </div>
-
-  <!-- ШАГ 3: TECH LAW / ЮРИДИЧЕСКИЙ БЛОК -->
-  <div id="step-3" class="hidden">
-    <h2>Акт приема-передачи</h2>
-    <p>Электронный договор ответственности за транспортировку авто.</p>
-
-    <div class="legal-box">
-      <strong>Условия обслуживания Valet Service:</strong><br>
-      1. Исполнитель берет на себя материальную ответственность за автомобиль с момента подписания электронного акта забора.<br>
-      2. Транспортировка осуществляется застрахованным водителем-перегонщиком.<br>
-      3. Все данные передаются по защищенному протоколу в соответствии с Политикой конфиденциальности.
-    </div>
-
-    <div class="form-group" style="display: flex; gap: 8px; align-items: center;">
-      <input type="checkbox" id="legalAgree" style="width: auto;">
-      <label for="legalAgree" style="margin: 0; font-weight: normal; font-size: 0.85rem;">
-        Я принимаю условия договора и подтверждаю передачу авто
-      </label>
-    </div>
-
-    <button class="btn" onclick="submitOrder()">Подтвердить и вызвать перегонщика</button>
-  </div>
-
-  <!-- ФИНАЛ: ПОДТВЕРЖДЕНИЕ -->
-  <div id="step-final" class="hidden" style="text-align: center;">
-    <div class="success-icon">🚗💨</div>
-    <h2>Заявка #4829 оформлена!</h2>
-    <p>Акт приема-передачи сформирован. Водитель назначен и свяжется с вами за 15 минут до прибытия.</p>
-    <button class="btn" onclick="location.reload()">Создать новую заявку</button>
-  </div>
 </div>
 
 <script>
-  function nextStep(step) {
-    document.getElementById('step-1').classList.add('hidden');
-    document.getElementById('step-2').classList.add('hidden');
-    document.getElementById('step-3').classList.add('hidden');
-    
-    document.getElementById('step-' + step).classList.remove('hidden');
-  }
-
-  function submitOrder() {
-    const agree = document.getElementById('legalAgree').checked;
-    if (!agree) {
-      alert('Пожалуйста, подтвердите согласие с условиями акта приема-передачи.');
-      return;
-    }
-    
-    document.getElementById('step-3').classList.add('hidden');
-    document.getElementById('step-final').classList.remove('hidden');
-  }
+    document.getElementById('valetForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('successMsg').style.display = 'block';
+        this.reset();
+    });
 </script>
 
 </body>
